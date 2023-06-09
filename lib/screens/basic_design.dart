@@ -6,16 +6,21 @@ class BasicDesignScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        children: [
-          Image(image: AssetImage('assets/images/landscape.jpg')),
-			 Title(),
-			 ButtomSection(),
-        ],
-      ),
-    );
-  }
+        return  Scaffold(
+          body: Column(
+            children: [
+                const Image(image: AssetImage('assets/images/landscape.jpg')),
+                const Title(),
+                const ButtomSection(),
+                Container(
+                        padding: const EdgeInsets.only(top: 15),
+                            margin: const EdgeInsets.symmetric(horizontal: 12),
+                            child: const Text('Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.'),
+                )
+            ],
+          ),
+        );
+      }
 }
 
 class ButtomSection extends StatelessWidget {
@@ -25,45 +30,45 @@ class ButtomSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-		const iconColor = Colors.blue;
-    return const Row(
-    	mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        const iconColor = Colors.blue;
+        return  const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-						children: [
-							CustomButton(iconColor: iconColor,icon: Icons.call,text: 'CALL'),
-							CustomButton(iconColor: iconColor,icon: Icons.navigation_rounded,text: 'ROUTE',rotate: 45.0),
-							CustomButton(iconColor: iconColor,icon: Icons.share,text: 'SHARE'),
-						],
+                children: [
+                  CustomButton(iconColor: iconColor,icon: Icons.call,text: 'CALL'),
+                  CustomButton(iconColor: iconColor,icon: Icons.navigation_rounded,text: 'ROUTE',rotate: 45.0),
+                  CustomButton(iconColor: iconColor,icon: Icons.share,text: 'SHARE'),
+                                ],
     );
   }
 }
 
 
 class CustomButton extends StatelessWidget {
-  final MaterialColor iconColor;
+      final MaterialColor iconColor;
 
-  final IconData icon;
-	final String text;
-	final double? rotate;
-	const CustomButton(
-	{
-    super.key,
-    required this.iconColor, required this.icon, required this.text ,this.rotate
-  });
+      final IconData icon;
+      final String text;
+      final double? rotate;
+      const CustomButton(
+      {
+        super.key,
+        required this.iconColor, required this.icon, required this.text ,this.rotate
+      });
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [
+      @override
+      Widget build(BuildContext context) {
+        return Column(children: [
 
-			if (rotate == null)...[
-			Icon(icon, color: iconColor,),
-			] else...[
-			RotationTransition(turns: AlwaysStoppedAnimation(rotate!/360),child: Icon(icon, color: iconColor,),),
-			],
+          if (rotate == null)...[
+          Icon(icon, color: iconColor,),
+          ] else...[
+          RotationTransition(turns: AlwaysStoppedAnimation(rotate!/360),child: Icon(icon, color: iconColor,),),
+          ],
 
-    	Text(text, style: TextStyle(color: iconColor),)
-    ]);
-  }
+          Text(text, style: TextStyle(color: iconColor),)
+        ]);
+      }
 }
 
 
