@@ -32,21 +32,8 @@ class _SingleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        return Container(
-
-                margin: const EdgeInsets.all(15),
-          child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-              child: Container(
-                  height: 150,
-                        width: 150,
-                  decoration: BoxDecoration(
-                      color: const Color.fromRGBO(62, 66, 107, 0.7),
-                      borderRadius: BorderRadius.circular(20)
-                  ),
-                  child: Column(
+        return _CardBackground(
+            card:  Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                           CircleAvatar(
@@ -56,10 +43,42 @@ class _SingleCard extends StatelessWidget {
                           ),
                           Text(text, style:  TextStyle( color: color, fontSize: 18 ) ,)
                       ],
-                  ),
-              ),
-            ),
-          ),
+                  )
         );
+  }
+}
+
+
+
+
+class _CardBackground extends StatelessWidget {
+  const _CardBackground({
+    super.key,
+    required this.card,
+  });
+
+  final Column card;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+
+            margin: const EdgeInsets.all(15),
+      child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+            child: Container(
+                    height: 150,
+                    width: 150,
+                    decoration: BoxDecoration(
+                    color: const Color.fromRGBO(62, 66, 107, 0.7),
+                    borderRadius: BorderRadius.circular(20)
+                   ),
+                    child: card,
+          ),
+        ),
+      ),
+    );
   }
 }
